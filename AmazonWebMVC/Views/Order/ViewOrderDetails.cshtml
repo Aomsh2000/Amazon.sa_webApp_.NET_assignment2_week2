@@ -1,0 +1,35 @@
+@model AmazonWebMVC.Models.Order
+
+@{
+    ViewData["Title"] = "Order Details";
+}
+
+<h2>Order Details</h2>
+
+<div>
+    <h3>Order ID: @Model.OrderID</h3>
+    
+    <p>Total Amount: @Model.TotalAmount</p>
+
+    <h4>Order Items</h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Quantity</th>
+                <th>SubTotal</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var detail in Model.OrderDetail)
+            {
+                <tr>
+                    <td>@detail.ProductID</td>
+                    <td>@detail.Quantity</td>
+                    <td>@detail.SubTotal</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

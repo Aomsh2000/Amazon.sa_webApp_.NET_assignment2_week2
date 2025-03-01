@@ -1,0 +1,37 @@
+@model AmazonWebMVC.Models.Order
+
+@{
+    ViewData["Title"] = "Order Confirmation";
+}
+
+<h2>Order Confirmation</h2>
+
+<p>Thank you for your order! Below are the details:</p>
+
+<h3>Order ID: @Model.OrderID</h3>
+<h4>User ID: @Model.UserID</h4>
+
+<h3>Order Details:</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Product ID</th>
+            <th>Quantity</th>
+            <th>SubTotal</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var orderDetail in Model.OrderDetail)
+        {
+            <tr>
+                <td>@orderDetail.ProductID</td>
+                <td>@orderDetail.Quantity</td>
+                <td>@orderDetail.SubTotal</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h3>Total Amount: $@Model.TotalAmount</h3>
+
+<p>Your order has been placed successfully!</p>

@@ -1,0 +1,26 @@
+@model List<AmazonWebMVC.Models.Product>
+
+@{
+    ViewData["Title"] = "Create Order";
+}
+
+<h2>Create Order</h2>
+
+<form asp-action="CreateOrder" method="post">
+
+    <h3>Select Products</h3>
+
+    <div>
+        @for (int i = 0; i < Model.Count; i++)
+        {
+            <div>
+                <label>@Model[i].Name (@Model[i].Category) - $@Model[i].Price</label>
+                <input type="checkbox" name="productIDs" value="@Model[i].ProductID" /> 
+                <label>Quantity:</label>
+                <input type="number" name="quantities" min="1" max="@Model[i].StockQuantity"  />
+            </div>
+        }
+    </div>
+
+    <button type="submit">Place Order</button>
+</form>

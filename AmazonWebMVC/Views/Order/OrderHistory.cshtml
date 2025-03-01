@@ -1,0 +1,38 @@
+@model List<AmazonWebMVC.Models.Order>
+
+@{
+    ViewData["Title"] = "Order History";
+}
+
+<h2>Order History</h2>
+
+@if (Model == null || !Model.Any())
+{
+    <p>No orders found for this user.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Order Date</th>
+                <th>Total Amount</th>
+                <th>Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var order in Model)
+            {
+                <tr>
+                    <td>@order.OrderID</td>
+                    <td>@order.TotalAmount</td>
+                    <td>
+                        <!-- Button or link to view the details of the order -->
+                        <a href="@Url.Action("ViewOrderDetails", "Order", new { orderID = order.OrderID })">View Details</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
