@@ -6,11 +6,13 @@ namespace AmazonWebMVC.Models
     public class OrderDetails{
     [Required]
     public int OrderDetailID { get; set; }
-    [Required]
+      [Required(ErrorMessage = "Order ID is required.")]
     public int OrderID { get; set; }
-    [Required]
+    [Required(ErrorMessage = "Product ID is required.")]
     public int ProductID { get; set; }
+    [Range(1, int.MaxValue, ErrorMessage = "Quantity must be at least 1.")]
     public int Quantity { get; set; }
+    
     public double SubTotal { get; set; }
     
     private static int lastOrderDetailsID = 0;

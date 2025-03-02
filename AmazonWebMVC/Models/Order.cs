@@ -3,9 +3,9 @@ using System.ComponentModel.DataAnnotations;
 namespace AmazonWebMVC.Models
 {
     public class Order{
-        [Required]
+        
         public int OrderID { get; set; }
-        [Required]
+        [Required(ErrorMessage = "User ID is required.")]
         public int UserID { get; set; }
         public List<OrderDetails> OrderDetail { get; set; }
         public double TotalAmount { get; set; }

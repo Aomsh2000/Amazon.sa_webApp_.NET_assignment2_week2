@@ -6,6 +6,11 @@
 
 <h2>Create Order</h2>
 
+<!-- Display Validation Summary -->
+<div>
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+</div>
+
 <form asp-action="CreateOrder" method="post">
 
     <h3>Select Products</h3>
@@ -17,10 +22,18 @@
                 <label>@Model[i].Name (@Model[i].Category) - $@Model[i].Price</label>
                 <input type="checkbox" name="productIDs" value="@Model[i].ProductID" /> 
                 <label>Quantity:</label>
-                <input type="number" name="quantities" min="1" max="@Model[i].StockQuantity"  />
+                <input type="number" name="quantities" min="1" max="@Model[i].StockQuantity" />
+
             </div>
         }
     </div>
 
     <button type="submit">Place Order</button>
 </form>
+
+<!-- Client-Side Validation Scripts -->
+@section Scripts {
+    <script src="~/lib/jquery-3.6.0.min.js"></script>
+    <script src="~/lib/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery.validate.unobtrusive.min.js"></script>
+}

@@ -3,7 +3,7 @@ using AmazonWebMVC.Models;
 
 namespace AmazonWebMVC.Controllers
 {
-    //[Route("Products")]
+    [Route("Products")]
     public class ProductController : Controller
     {
         
@@ -16,7 +16,7 @@ namespace AmazonWebMVC.Controllers
         };
 
         // display the product list
-       // [HttpGet]
+        [HttpGet]
         public IActionResult Index()
         {
             return View(_products);

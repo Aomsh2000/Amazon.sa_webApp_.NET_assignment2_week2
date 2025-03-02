@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AmazonWebMVC")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+428089f8cccbd1cdd5e8870a088c430a5cb9006f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+66bc6aa87e8143de853cb8e86620d23b60bfe770")]
 [assembly: System.Reflection.AssemblyProductAttribute("AmazonWebMVC")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AmazonWebMVC")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

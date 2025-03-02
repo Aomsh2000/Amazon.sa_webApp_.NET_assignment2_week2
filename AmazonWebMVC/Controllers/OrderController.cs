@@ -3,6 +3,7 @@ using AmazonWebMVC.Models;
 
 namespace AmazonWebMVC.Controllers
 {
+    [Route("Orders")]
     public class OrderController : Controller
     {
        
@@ -26,6 +27,13 @@ namespace AmazonWebMVC.Controllers
         [HttpPost]
         public IActionResult CreateOrder(int userID, List<int> productIDs, List<int> quantities)
         {
+            
+            // Ensure the input is valid
+             if (!ModelState.IsValid)
+            {
+                return View("CreateOrder", _products); // Return the form with error messages
+            }
+
             if (productIDs.Count != quantities.Count)
             {
                 
@@ -64,7 +72,20 @@ namespace AmazonWebMVC.Controllers
             // save the order 
             return View("OrderConfirmation", newOrder);
         }
-
+               // GET /Orders/{userId}
+        [HttpGet("{userId}")]
+        public IActionResult OrderHistory(int userId)
+        {
+            var userOrders = _orders.Where(o => o.UserID == userId).ToList();
+            if (userOrders.Any())
+            {
+                return View(userOrders); // Return the view with orders for the specific user
+            }
+            else
+            {
+                return NotFound($"No orders found for User ID {userId}.");
+            }
+        }
         public IActionResult ViewOrderDetails(int orderID)
             {
                 var order = _orders.FirstOrDefault(o => o.OrderID == orderID);
